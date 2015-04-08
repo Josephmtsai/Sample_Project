@@ -78,7 +78,7 @@ Add Style
     cursor: pointer;
 }
 
-.sidebar-nav li:active
+.sidebar-nav  li .active
 {
 
 	background-color: #E7EBFF;
