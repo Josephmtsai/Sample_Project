@@ -1,3 +1,3 @@
-angular.module('Sample' ).controller('todayWeatherCtrl', ["$scope", "$http",  function ($scope, $http) {
-
+angular.module('Sample' ).controller('todayWeatherCtrl', ["$scope", "$http","$location",  function ($scope, $http,$location) {
+	$scope.setActivePage('todayWeather');
 }]);	

@@ -72,15 +72,17 @@ Add Style
 }
 
 .sidebar-nav li a:hover {
-    text-decoration: none;
-    color: blue;
-    background: rgba(255,255,255,0.2);
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
     cursor: pointer;
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
+.sidebar-nav li:active
+{
+
+	background-color: #E7EBFF;
+
 }
 
 

@@ -9,21 +9,21 @@
 css"/>
 
 <link href="css/main_style.css" rel="stylesheet">
-<body>
+<body ng-controller="MainCtrl">
 
 
 <div id="wrapper">
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" data-header-menu="" >
             <ul class="sidebar-nav">
-                <li >
-                    <a href="#/">
+                <li class="Analysis" >
+                    <a href="#/" >
                         Data Analysis
                     </a>
                 </li>
-                <li >
-                    <a href="#">Today's Weather</a>
+                <li class="todayWeather" >
+                    <a href="#/todayWeather">Today's Weather</a>
                 </li>
                 
             </ul>
