@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="Sample">
+<title>Sample Project</title>
+<head> </head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"   href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.
+css"/>
+
+<link href="css/main_style.css" rel="stylesheet">
+<body>
+
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li >
+                    <a href="#/">
+                        Data Analysis
+                    </a>
+                </li>
+                <li >
+                    <a href="#">Today's Weather</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+           <div ng-view ></div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+
+<script src="js/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="js/bower_components/angular/angular.js"></script>
+<script src="js/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js" > </script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.js"></script>
+
+
+<!--Only Run at no http potocal-->
+<script type="text/ng-template" id="template/dataAnalysis.html">
+{{hello}}
+</script>
+
+<script type="text/ng-template" id="template/todayWeather.html">
+{{Weather}}
+</script>
+<!--Factory-->
+<script src="js/factory/factory.js"></script>
+<!--Routing Controller-->
+
+<script src="js/main_app.js"></script>
+
+<!--Sub Page Controller -->
+<script src="js/controllers/dataAnalysisController.js"></script>
+<script src="js/controllers/todayWeatherController.js"></script>
+
+
+</body>
+</html>
