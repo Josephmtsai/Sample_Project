@@ -3,20 +3,57 @@
 Add Style
 *******************************************************************************/
 
+
+/******************************************************************************
+Title Style
+********************************************************************************/
+.CTitle{
+    font-size: 16px;
+    font-family: Arial;
+    padding:  4px 0 4px 0 ;
+    border-bottom: 1px solid;
+    border-color: #000000;
+
+}
+
 /******************************************************************************
 Icon
 ********************************************************************************/
 
-.SI  {
-  background-image: url('../img/icons.png');
-  background-repeat: no-repeat;
 
+
+.SI-clear{
+    display: inline-block;
+    background-image: url('../img/icons.png');
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    background-position: -60px -15px;
+}
+.SI-rain{
+    display: inline-block;
+    background-image: url('../img/icons.png');
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    background-position: -280px -370px;
 }
 
-.SI .SI-Sun  {
-  background-image: url('../img/icons.png');
-  background-repeat: no-repeat;
-  background-position: 0 -600px;
+.SI-cloud{
+    display: inline-block;
+    background-image: url('../img/icons.png');
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    background-position: -60px -160px;
+}
+.SI-na{
+    display: inline-block;
+    background-image: url('../img/icons.png');
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    background-position: -130px -520px;
 }
 
 /******************************************************************************
@@ -102,7 +139,8 @@ Menu
 {
 
 	background-color: #E7EBFF;
-
+    border-color: #2a9fcd;
+    font-weight: bold;
 }
 
 
@@ -147,6 +185,19 @@ Info box
 .infobox-container {
     text-align: center;
     font-size: 0;
+}
+.infobox-small {
+    display: inline-block;
+    width: 80px;
+    height: 100px;
+    color: #555;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0 0 0 0;
+    padding: 8px 3px 6px 9px;
+    vertical-align: middle;
+    text-align: left;
+    position: relative;
 }
 .infobox {
     display: inline-block;
@@ -565,28 +616,30 @@ Info box
 .infobox.infobox-dark>.badge.badge-warning>[class*="icon-"] {
     color: #ecb792;
 }
-.infobox-small {
-    width: 125px;
-    height: 45px;
-    text-align: left;
-    padding-bottom: 5px;
+
+/***************************************************************************
+dot line 
+***************************************************************************/
+
+.hr {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    font-size: 0;
+    border-top: 1px solid #e3e3e3;
+    margin: 12px 0;
 }
-.infobox-small>.infobox-icon, .infobox-small>.infobox-chart, .infobox-small>.infobox-progress {
-    display: inline-block;
-    width: 40px;
-    max-width: 40px;
-    height: 42px;
-    line-height: 38px;
-    vertical-align: middle;
+.hr-double {
+    height: 1px;
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
 }
-.infobox-small>.infobox-data {
-    display: inline-block;
-    text-align: left;
-    vertical-align: middle;
-    max-width: 72px;
-    min-width: 0;
+.hr.dotted {
+    border-top-style: dotted;
 }
-.infobox-small>.infobox-chart>.sparkline {
-    font-size: 14px;
-    margin-left: 2px;
+.hr-double.dotted {
+    border-bottom-style: dotted;
+}
+.hr-32, .hr32 {
+    margin: 32px 0;
 }

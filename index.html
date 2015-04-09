@@ -21,6 +21,9 @@ css"/>
 <link href="css/main_style.css" rel="stylesheet">
 <body ng-controller="MainCtrl">
 
+<!-- Right floating Menu-->
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+<link href="css/mfb.css" rel="stylesheet" />
 
 <div id="wrapper">
 
@@ -55,18 +58,43 @@ css"/>
 <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js" > </script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.js"></script>
 
+<script src="js/bower_components/highcharts/highcharts.js"></script>
+<script src="js/bower_components/highcharts/highcharts-more.js"></script>
+<script src="js/bower_components/highcharts/modules/exporting.js"></script>
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script type="text/javascript" src="http://code.highcharts.com/modules/drilldown.js"></script>   
+
+<script type="text/javascript" src="js/modified/highcharts-ng.js"></script>
+
 
 <!--Only Run at no http potocal-->
 <script type="text/ng-template" id="template/dataAnalysis.html">
+<floating-menu  > </floating-menu>
 <div  > 
+    <div class="CTitle">
+            Data Analysis
+        </div>
+    <div class="panel panel-default">
+        <div class="panel-heading ">
+            <i class="fa fa-dashboard"> </i> Dashboard
+        </div>
+        <div class="panel-body">
 
+            <highchart id="Highchart1" config="LineChartNG"></highchart>
+            <div class="hr hr32 hr-dotted"></div>
+            <highchart id="Highchart2" config="highchartsNG"></highchart>
+            <div class="hr hr32 hr-dotted"></div>
+            <highchart id="Highchart3" config="piechart"></highchart>
+        </div>
+    </div>        
 </div>
 
 </script>
 
 <script type="text/ng-template" id="template/todayWeather.html">
 
-
+<floating-menu  list="menu_list" > </floating-menu>
 <load-ing    my-count="loadstatus" ></load-ing>
             
 
@@ -77,7 +105,7 @@ css"/>
                 <article class="col-sm-12 col-md-12 col-lg-6">    
                     <form class="form-inline">
                         <div class="form-group">
-                            <a  class="btn btn-danger"  ng-click="Query()">  Query </a>
+                            <a  class="btn btn-danger"  ng-click="Query()">  Search </a>
                             <label class="label label-primary" for="City" >City:  </label>  
                             <input class="form-control"    name="City" id="City" ng-model="City"  >
                         </div>     
@@ -115,17 +143,16 @@ css"/>
                         <div role="content">
                             <!-- widget content -->
                             <div class="widget-body no-padding"> 
-                                <i class="SI SI-Sun" > </i>
-                                    
+                                
+                                                           
                                 <div>
 
-                                    <div class="infobox infobox-blue  " ng-repeat="Weather in Info.weather">
-                                        <div class="infobox-data">
-                                            <span class="infobox-content">{{Weather.main}}</span>
-                                            <div class="infobox-text">{{Weather.description}}</div>
-                                        </div>                                            
+                                    <div class="infobox-small" ng-show="Info.main">
+                                        
+                                            <span ng-class="Weather_icon"  > </span>
+                                                                               
                                     </div>    
-                                    <div class="infobox infobox-blue  " ng-repeat="Weather in Info.weather">
+                                    <div class="infobox infobox-blue" ng-repeat="Weather in Info.weather">
                                         <div class="infobox-data">
                                             <span class="infobox-content">{{Weather.main}}</span>
                                             <div class="infobox-text">{{Weather.description}}</div>
@@ -156,6 +183,8 @@ css"/>
 </div>            
 </script>
 
+
+<!--Loading Template-->
 <script type="text/ng-template" id="template/loading.html">
 <div  ng-show="counting ==0? false :true"   class="{{ counting ==0?  'animated fadeInDown' : '' }}" id="myDiv" style=" position:absolute; background-color: white; width:100%;  height: 100%; filter:alpha(opacity=50);z-index:100000; opacity:0.4;text-align:center;" >
         
@@ -165,10 +194,37 @@ css"/>
 
 </script>
 
+<!--ngfloatingmenu -->
+<script type="text/ng-template" id="template/ngfloatingmenu.html">
+<ul class="mfb-component--tr mfb-zoomin">
+    <li class="mfb-component__wrap">
+    <a href="#" data-mfb-label="Quick Menu" class="mfb-component__button--main">
+        <i class="mfb-component__main-icon--resting ion-navicon-round"></i>
+        <i class="mfb-component__main-icon--active ion-navicon"></i>
+    </a>     
+    <ul class="mfb-component__list">
+      
+        <li>
+            <a href="#/" data-mfb-label="Data Analysis" class="mfb-component__button--child">
+              <i class="mfb-component__child-icon ion-stats-bars"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#/todayWeather" data-mfb-label="Today's Weather" class="mfb-component__button--child">
+              <i class="mfb-component__child-icon ion-information-circled"></i>
+            </a>
+          </li>
+
+          
+    </ul>        
+    </li>
+</ul>
+
+</script>
 
 <!-- Directive -->
 <script src="js/directive/directive.js"></script>
-
+<script src="js/directive/ngfloatingmenu.js"></script>
 <!--Factory-->
 <script src="js/factory/factory.js"></script>
 <!--Routing Controller-->

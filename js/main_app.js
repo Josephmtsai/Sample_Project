@@ -6,7 +6,9 @@ var myApp = angular.module('Sample', [
     'datafactory',
     'ui.bootstrap',
     'directive_template',
-    'datafactory'
+    'datafactory',
+    'highcharts-ng',
+    'ngfloatingmenu'
   ]).directive('headerMenu', function () {
     
     return function(scope, element) {
