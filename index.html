@@ -5,8 +5,18 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <link rel="stylesheet" type="text/css"   href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.
 css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+
+<!-- SmartAdmin RTL Support  -->
+<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css">
 
 <link href="css/main_style.css" rel="stylesheet">
 <body ng-controller="MainCtrl">
@@ -17,15 +27,12 @@ css"/>
         <!-- Sidebar -->
         <div id="sidebar-wrapper" data-header-menu="" >
             <ul class="sidebar-nav">
-                <li  >
-                    <a class="Analysis" href="#/" >
-                        Data Analysis
-                    </a>
+                <li>
+                    <a class="Analysis" href="#/" >Data Analysis</a>
                 </li>
-                <li class="todayWeather" >
-                    <a href="#/todayWeather">Today's Weather</a>
+                <li>
+                    <a class="todayWeather" href="#/todayWeather">Today's Weather</a>
                 </li>
-                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -51,12 +58,117 @@ css"/>
 
 <!--Only Run at no http potocal-->
 <script type="text/ng-template" id="template/dataAnalysis.html">
-{{hello}}
+<div  > 
+
+</div>
+
 </script>
 
 <script type="text/ng-template" id="template/todayWeather.html">
-{{Weather}}
+
+
+<load-ing    my-count="loadstatus" ></load-ing>
+            
+
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-6">    
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <a  class="btn btn-danger"  ng-click="Query()">  Query </a>
+                            <label class="label label-primary" for="City" >City:  </label>  
+                            <input class="form-control"    name="City" id="City" ng-model="City"  >
+                        </div>     
+                    </form>                        
+                </article>
+                <article class="col-sm-12 col-md-12 col-lg-6">    
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label class="label label-primary" for="Country" >Country:  </label>  
+                            <input class="form-control"    name="Country" id="Country" ng-model="Country"  >
+                        </div>    
+                    </form>
+                </article>
+
+
+            </div>
+            
+            
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="alert alert-danger" ng-show="Info.message" >
+                                                <i class="fa-fw fa fa-info"></i>
+                                    <strong>{{Info.message}} </strong>   
+                </div>
+                <article   class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable" >                      
+                    <div   id="wid-id-1" class="jarviswidget jarviswidget-color-pink jarviswidget-sortable"  >
+                        <header role="heading"><div class="jarviswidget-ctrls" role="menu">   </div>
+                        <span class="widget-icon">  <i class="fa fa-cloud"> </i> </span>
+                        <h2> Today's Weather  </h2>
+                     
+                        </header>
+       
+                        <!-- widget div-->
+                        <div role="content">
+                            <!-- widget content -->
+                            <div class="widget-body no-padding"> 
+                                <i class="SI SI-Sun" > </i>
+                                    
+                                <div>
+
+                                    <div class="infobox infobox-blue  " ng-repeat="Weather in Info.weather">
+                                        <div class="infobox-data">
+                                            <span class="infobox-content">{{Weather.main}}</span>
+                                            <div class="infobox-text">{{Weather.description}}</div>
+                                        </div>                                            
+                                    </div>    
+                                    <div class="infobox infobox-blue  " ng-repeat="Weather in Info.weather">
+                                        <div class="infobox-data">
+                                            <span class="infobox-content">{{Weather.main}}</span>
+                                            <div class="infobox-text">{{Weather.description}}</div>
+                                        </div>                                            
+                                    </div>     
+                                        
+                                    
+                                   
+                                    
+                                </div>
+                                <div>
+                                    <label class="label label-danger" ng-show="Info.main" > Temperature: {{Info.main.temp_min  | number}} &deg;C   ~  {{Info.main.temp_max | number}} &deg;C</label>
+                                    <label class="label label-primary"  ng-show="Info.main" > Humidity:  {{Info.main.humidity}}  %</label>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                    
+            
+
+                    
+            </div>
+        </div>
+
+</div>            
 </script>
+
+<script type="text/ng-template" id="template/loading.html">
+<div  ng-show="counting ==0? false :true"   class="{{ counting ==0?  'animated fadeInDown' : '' }}" id="myDiv" style=" position:absolute; background-color: white; width:100%;  height: 100%; filter:alpha(opacity=50);z-index:100000; opacity:0.4;text-align:center;" >
+        
+            <img src="img/Loading4.GIF" />
+       
+</div>
+
+</script>
+
+
+<!-- Directive -->
+<script src="js/directive/directive.js"></script>
+
 <!--Factory-->
 <script src="js/factory/factory.js"></script>
 <!--Routing Controller-->

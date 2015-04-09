@@ -5,6 +5,7 @@ var myApp = angular.module('Sample', [
     'ngRoute',
     'datafactory',
     'ui.bootstrap',
+    'directive_template',
     'datafactory'
   ]).directive('headerMenu', function () {
     

@@ -9,7 +9,7 @@ datafactory.factory('Factory', function ($http, $q) {
 
             $http({
                 method: 'GET',
-                url: 'http://api.openweathermap.org/data/2.5/weather?q=' + City + ',' + Country
+                url: 'http://api.openweathermap.org/data/2.5/weather?q=' + City + ',' + Country + '&units=metric'
             }).success(function (data) {
                 deferred.resolve(data);
             }).error(function (response) {
