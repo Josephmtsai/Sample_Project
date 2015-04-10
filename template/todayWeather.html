@@ -1,36 +1,87 @@
+<floating-menu  list="menu_list" > </floating-menu>
+<load-ing    my-count="loadstatus" ></load-ing>
+            
+
+
 <div class="panel panel-default">
-      	<div class="panel-heading">
-			<label class="label label-primary" >Today's Weather </label>            
-      	</div>
-      	<div class="panel-body">
-	        <div class="row">
-	        
-	            <article   class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable" >                      
-	                <div   id="wid-id-1" ng-class="DDL.Is_Today ? 'jarviswidget jarviswidget-color-red jarviswidget-sortable': 'jarviswidget jarviswidget-color-pink jarviswidget-sortable'"  >
-	                    <header role="heading"><div class="jarviswidget-ctrls" role="menu">   </div>
-	                    <span class="widget-icon">  <i class="ion-ios7-calendar-outline"></i>  </span>
-	                    <h2> </h2>
-	                 
-	                    </header>
-	   
-	                    <!-- widget div-->
-	                    <div role="content">
-	                        <!-- widget content -->
-			                <div class="widget-body no-padding"> 
-	                            <div   >
-	                              
-	                        
-	                           
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </article>
-	                
-			
+        <div class="panel-heading">
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-6">    
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <a  class="btn btn-danger"  ng-click="Query()">  Search </a>
+                            <label class="label label-primary" for="City" >City:  </label>  
+                            <input class="form-control"    name="City" id="City" ng-model="City"  >
+                        </div>     
+                    </form>                        
+                </article>
+                <article class="col-sm-12 col-md-12 col-lg-6">    
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label class="label label-primary" for="Country" >Country:  </label>  
+                            <input class="form-control"    name="Country" id="Country" ng-model="Country"  >
+                        </div>    
+                    </form>
+                </article>
 
-	                
-	      	</div>
-		</div>
 
-</div>
+            </div>
+            
+            
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="alert alert-danger" ng-show="Info.message" >
+                                                <i class="fa-fw fa fa-info"></i>
+                                    <strong>{{Info.message}} </strong>   
+                </div>
+                <article   class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable" >                      
+                    <div   id="wid-id-1" class="jarviswidget jarviswidget-color-pink jarviswidget-sortable"  >
+                        <header role="heading"><div class="jarviswidget-ctrls" role="menu">   </div>
+                        <span class="widget-icon">  <i class="fa fa-cloud"> </i> </span>
+                        <h2> Today's Weather  </h2>
+                     
+                        </header>
+       
+                        <!-- widget div-->
+                        <div role="content">
+                            <!-- widget content -->
+                            <div class="widget-body no-padding"> 
+                                
+                                                           
+                                <div>
+
+                                    <div class="infobox-small" ng-show="Info.main">
+                                        
+                                            <span ng-class="Weather_icon"  > </span>
+                                                                               
+                                    </div>    
+                                    <div class="infobox infobox-blue" ng-repeat="Weather in Info.weather">
+                                        <div class="infobox-data">
+                                            <span class="infobox-content">{{Weather.main}}</span>
+                                            <div class="infobox-text">{{Weather.description}}</div>
+                                        </div>                                            
+                                    </div>     
+                                        
+                                    
+                                   
+                                    
+                                </div>
+                                <div>
+                                    <label class="label label-danger" ng-show="Info.main" > Temperature: {{Info.main.temp_min  | number}} &deg;C   ~  {{Info.main.temp_max | number}} &deg;C</label>
+                                    <label class="label label-primary"  ng-show="Info.main" > Humidity:  {{Info.main.humidity}}  %</label>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                    
+            
+
+                    
+            </div>
+        </div>
+
+</div>         
